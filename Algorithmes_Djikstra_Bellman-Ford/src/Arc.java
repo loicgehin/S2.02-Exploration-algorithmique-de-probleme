@@ -7,14 +7,14 @@ public class Arc {
      * poids : le poids de l'arc
      */
     protected String noeudCible;
-    protected Double poids;
+    protected double poids;
 
     /**
      * Constructeur de l'arc
      * @param noeudCible
      * @param poids
      */
-    public Arc(String noeudCible, Double poids){
+    public Arc(String noeudCible, double poids){
         this.noeudCible = noeudCible;
         if (poids<0) throw new Error ("erreur poids");
         this.poids = poids;

@@ -60,7 +60,7 @@ public class GrapheListe implements Graphe{
     }
 
     /**
-     * ajoute un noeud avec une liste d'arc
+     * ajoute un noeud avec une liste d'arc comme sur la figure 3
      * @param noeud
      */
     public void ajouterNoeud (String noeud){
@@ -68,5 +68,10 @@ public class GrapheListe implements Graphe{
             this.noeuds.add(noeud);
             this.adjacence.add(new Arcs());
         }
+    }
+
+    @Override
+    public String toString() {
+        return "GrapheListe{" + "noeuds=" + noeuds + adjacence;
     }
 }

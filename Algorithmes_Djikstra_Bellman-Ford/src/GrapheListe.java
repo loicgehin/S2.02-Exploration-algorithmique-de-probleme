@@ -45,4 +45,17 @@ public class GrapheListe implements Graphe{
         }
         throw new Error("noeud inconnu");
     }
+
+    /**
+     * ajoute un arc entre deux noeuds
+     * @param noeudSource
+     * @param noeudCible
+     * @param poids
+     */
+    public void ajouterArc(String noeudSource, String noeudCible, double poids){
+        int i = this.noeuds.indexOf(noeudSource);
+        if (i == -1) throw new Error("noeudSource inconnu");
+        if (!this.noeuds.contains(noeudCible)) throw new Error("noeudCible inconnu");
+        this.adjacence.get(i).ajouterArc(new Arc(noeudCible, poids));
+    }
 }

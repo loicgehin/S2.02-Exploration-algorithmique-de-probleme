@@ -58,4 +58,39 @@ public class GrapheListe implements Graphe{
         if (!this.noeuds.contains(noeudCible)) throw new Error("noeudCible inconnu");
         this.adjacence.get(i).ajouterArc(new Arc(noeudCible, poids));
     }
+
+    /**
+     * ajoute un noeud avec une liste d'arc comme sur la figure 3
+     * @param noeud
+     */
+    public void ajouterNoeud (String noeud){
+        if (!this.noeuds.contains(noeud)){
+            this.noeuds.add(noeud);
+            this.adjacence.add(new Arcs());
+        }
+    }
+
+    /**
+     * on imprime le graphe de la figure 3 à l"ecran
+     * @return
+     */
+    @Override
+    public String toString() {
+
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < this.noeuds.size() ; i++) {
+            sb.append(noeuds.get(i)).append("->");
+
+            ArrayList<Arc> arcs = adjacence.get(i).getArcs();
+            for (Arc arc : arcs){
+                if(arc.poids == (long) arc.poids){
+                    sb.append(arc.noeudCible).append("(").append((long) arc.poids).append(")");
+                } else {
+                    sb.append(arc.noeudCible).append("(").append(arc.poids).append(")");
+                }
+            }
+            sb.append("\n");
+        }
+        return sb.toString().trim();
+    }
 }

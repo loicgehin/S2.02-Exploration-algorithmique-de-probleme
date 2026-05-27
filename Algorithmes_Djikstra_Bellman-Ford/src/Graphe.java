@@ -6,7 +6,7 @@ import java.util.List;
 public interface Graphe {
     /**
      * retourne la liste des noeuds du graphe
-     * @return
+     * @return liste des noeuds
      */
     List<String> getNoeuds();
 

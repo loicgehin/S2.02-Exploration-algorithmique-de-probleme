@@ -74,23 +74,17 @@ public class GrapheListe implements Graphe{
      * on imprime le graphe de la figure 3 à l"ecran
      * @return
      */
-    @Override
     public String toString() {
-
-        StringBuffer sb = new StringBuffer();
-        for (int i = 0; i < this.noeuds.size() ; i++) {
-            sb.append(noeuds.get(i)).append("->");
+        String res = "";
+        for (int i = 0; i < this.noeuds.size(); i++) {
+            res += noeuds.get(i) + "->";
 
             ArrayList<Arc> arcs = adjacence.get(i).getArcs();
-            for (Arc arc : arcs){
-                if(arc.poids == (long) arc.poids){
-                    sb.append(arc.noeudCible).append("(").append((long) arc.poids).append(")");
-                } else {
-                    sb.append(arc.noeudCible).append("(").append(arc.poids).append(")");
-                }
+            for (Arc arc : arcs) {
+                res += arc.noeudCible + "(" + arc.poids + ") ";
             }
-            sb.append("\n");
+            res+= "\n";
         }
-        return sb.toString().trim();
+        return res;
     }
 }

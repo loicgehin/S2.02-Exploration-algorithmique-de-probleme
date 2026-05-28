@@ -1,0 +1,44 @@
+import java.io.IOException;
+import java.util.ArrayList;
+
+public class MainTransport {
+    public static void main(String[] args) throws IOException {
+        if (args.length != 2) {
+            System.exit(1);
+        }
+        try {
+            String fichier_stations = "../stan.nodes.txt";
+            String fichier_connexions = "../stan.edges.txt";
+
+            Graphe reseauStan = LireReseau.lire(fichier_stations, fichier_connexions);
+            String regex = "\\[|\\]";
+            String depart = args[0];
+            String arrivee = args[1];
+            depart = depart.split(regex)[1];
+            arrivee = arrivee.split(regex)[1];
+
+
+            //bellmanFord
+            BellmanFord bf = new BellmanFord();
+            Valeurs resBf = bf.resoudre(reseauStan, depart);
+            ArrayList<String> cheminBf;
+            try {
+                cheminBf= resBf.calculerChemin(arrivee);
+            }catch (Throwable e){
+                cheminBf = new ArrayList<>();
+                cheminBf.add(depart);
+            }
+            String resPy = "";
+            for (int i = 0; i < cheminBf.size(); i++) {
+                resPy += cheminBf.get(i);
+                //';' aprés chaque noeud sauf le dernier
+                if (i != cheminBf.size() - 1) resPy += ";";
+            }
+            System.out.print(resPy);
+        } catch (Throwable e) {
+            System.exit(1);
+        }
+
+        //Dijkstra TODO
+    }
+}

@@ -24,23 +24,27 @@ public class GrapheListe implements Graphe{
      * getter de la liste des noeuds
      * @return liste des noeuds
      */
-    public List<String> getNoeuds() {
+    public ArrayList<String> getNoeuds() {
         return this.noeuds;
     }
 
     /**
+     * getter de la liste des arcs
+     * @return liste des arcs
+     */
+    public ArrayList<Arcs> getAdjacence() { return this.adjacence;}
+
+
+    /**
      * getter des arcs au noeud cible
      * @param noeudCible
-     * @param poids
      * @return arcs au noeud cible
      */
-    public Arcs getArcs(String noeudCible, double poids) {
+    public Arcs getArcs(String noeudCible) {
         int index = this.noeuds.indexOf(noeudCible);
         if (index != -1) {
             for (Arc arcs : this.adjacence.get(index).getArcs()) {
-                //verifie le poids en cas de nom identique
-                if (arcs.poids == poids)
-                    return this.adjacence.get(index);
+                return this.adjacence.get(index);
             }
         }
         throw new Error("noeud inconnu");

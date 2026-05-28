@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -8,14 +9,13 @@ public interface Graphe {
      * retourne la liste des noeuds du graphe
      * @return liste des noeuds
      */
-    List<String> getNoeuds();
+    ArrayList<String> getNoeuds();
 
     /**
      * retourne les arcs du graphe au noeud cible
      * @param noeudCible
-     * @param poids
      * @return liste des arcs au noeud cible
      */
-    Arcs getArcs(String noeudCible, double poids);
+    Arcs getArcs(String noeudCible);
 
 }

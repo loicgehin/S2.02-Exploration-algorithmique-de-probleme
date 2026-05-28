@@ -44,8 +44,12 @@ public class MainTransport {
 
             //comparaison temps dans un txt generer pour ne pas faire bugger l'interface python
             FileWriter fw = new FileWriter("temps.txt");
-            fw.write("BellmanFord : "+tempsBF + "\n");
+            fw.write("Depart : "+depart+" ");
+            fw.write("Arrivee : "+arrivee+" ");
+            fw.write("chemin : "+resPy+" ");
+            fw.write("BellmanFord : "+tempsBF + " ");
             //TODO : ajouter les temps de Dijkstra
+//            fw.write("Dijkstra : "+ tempsDj + " ");
             fw.close();
         } catch (Throwable e) {
             System.exit(1);

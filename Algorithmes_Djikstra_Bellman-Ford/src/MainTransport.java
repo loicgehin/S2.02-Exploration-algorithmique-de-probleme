@@ -42,14 +42,14 @@ public class MainTransport {
 
             //TODO : ajouter Dijkstra
 
-            //comparaison temps dans un txt generer pour ne pas faire bugger l'interface python
-            FileWriter fw = new FileWriter("temps.txt");
+            //comparaison temps dans un txt generer pour ne pas faire bugger l'interface python, true permet d'ajouter au fichier
+            FileWriter fw = new FileWriter("temps.txt",true);
             fw.write("Depart : "+depart+" ");
             fw.write("Arrivee : "+arrivee+" ");
-            fw.write("chemin : "+resPy+" ");
-            fw.write("BellmanFord : "+tempsBF + " ");
+            fw.write("chemin : "+resPy+"\n");
+            fw.write("BellmanFord : "+tempsBF + "\n");
             //TODO : ajouter les temps de Dijkstra
-//            fw.write("Dijkstra : "+ tempsDj + " ");
+//            fw.write("Dijkstra : "+ tempsDj + "\n");
             fw.close();
         } catch (Throwable e) {
             System.exit(1);

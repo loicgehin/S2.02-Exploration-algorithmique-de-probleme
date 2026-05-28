@@ -1,3 +1,4 @@
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -19,8 +20,11 @@ public class MainTransport {
 
 
             //bellmanFord
+            long debut = System.nanoTime();
             BellmanFord bf = new BellmanFord();
             Valeurs resBf = bf.resoudre(reseauStan, depart);
+            long fin = System.nanoTime();
+            long tempsBF = (fin - debut)/1000000;
             ArrayList<String> cheminBf;
             try {
                 cheminBf= resBf.calculerChemin(arrivee);
@@ -35,10 +39,17 @@ public class MainTransport {
                 if (i != cheminBf.size() - 1) resPy += ";";
             }
             System.out.print(resPy);
+
+            //TODO : ajouter Dijkstra
+
+            //comparaison temps dans un txt generer pour ne pas faire bugger l'interface python
+            FileWriter fw = new FileWriter("temps.txt");
+            fw.write("BellmanFord : "+tempsBF + "\n");
+            //TODO : ajouter les temps de Dijkstra
+            fw.close();
         } catch (Throwable e) {
             System.exit(1);
         }
 
-        //Dijkstra TODO
     }
 }

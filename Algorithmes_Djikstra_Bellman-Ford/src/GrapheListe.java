@@ -43,9 +43,7 @@ public class GrapheListe implements Graphe{
     public Arcs getArcs(String noeudCible) {
         int index = this.noeuds.indexOf(noeudCible);
         if (index != -1) {
-            for (Arc arcs : this.adjacence.get(index).getArcs()) {
-                return this.adjacence.get(index);
-            }
+            return this.adjacence.get(index);
         }
         throw new Error("noeud inconnu");
     }

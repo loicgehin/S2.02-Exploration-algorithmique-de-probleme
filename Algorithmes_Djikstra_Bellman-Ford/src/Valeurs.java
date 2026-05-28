@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.TreeMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * Classe fournie, permet de stocker des valeurs associées au noeud et 
@@ -91,6 +88,20 @@ public class Valeurs {
         }
         return res;
 
+    }
+
+    public ArrayList<String> calculerChemin(String destination){
+        ArrayList<String> chemin = new ArrayList<>();
+        String noeud = destination;
+        //ajoute a l'envers jusqu'a le noeud de depart
+        while (noeud != null){
+            chemin.add(noeud);
+            noeud = parent.get(noeud);
+        }
+        //retourne le chemin dans le bon sens
+        Collections.reverse(chemin);
+        if (chemin.size() == 1) throw new Error("Pas de chemin");
+        return chemin;
     }
 
 }

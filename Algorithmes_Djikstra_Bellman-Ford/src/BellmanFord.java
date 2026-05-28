@@ -21,7 +21,7 @@ public class BellmanFord {
         //initialisation des distances et precedents
         for (String noeud : this.listeNoeuds) {
             res.setValeur(noeud, Double.MAX_VALUE);
-            res.setParent(noeud, depart);
+            res.setParent(noeud, null);
         }
         res.setValeur(depart, 0.0);
 

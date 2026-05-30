@@ -40,7 +40,12 @@ public class MainTransport {
             }
             System.out.print(resPy);
 
-            //TODO : ajouter Dijkstra
+            //Djikstra
+            long debutDj = System.nanoTime();
+            Djikstra dj = new Djikstra();
+            Valeurs resDj = dj.resoudre(reseauStan,depart);
+            long finDj = System.nanoTime();
+            long tempsDj = (finDj - debutDj)/1000000;
 
             //comparaison temps dans un txt generer pour ne pas faire bugger l'interface python, true permet d'ajouter au fichier
             FileWriter fw = new FileWriter("temps.txt",true);
@@ -48,7 +53,7 @@ public class MainTransport {
             fw.write("Arrivee : "+arrivee+" ");
             fw.write("chemin : "+resPy+"\n");
             fw.write("BellmanFord : "+tempsBF + "\n");
-            //TODO : ajouter les temps de Dijkstra
+            fw.write("Djikstra : "+tempsDj+ "\n");
 //            fw.write("Dijkstra : "+ tempsDj + "\n");
             fw.close();
         } catch (Throwable e) {

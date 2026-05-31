@@ -32,13 +32,12 @@ public class MainTransport {
                 cheminBf = new ArrayList<>();
                 cheminBf.add(depart);
             }
-            String resPy = "";
+            String resPyBf = "";
             for (int i = 0; i < cheminBf.size(); i++) {
-                resPy += cheminBf.get(i);
+                resPyBf += cheminBf.get(i);
                 //';' aprés chaque noeud sauf le dernier
-                if (i != cheminBf.size() - 1) resPy += ";";
+                if (i != cheminBf.size() - 1) resPyBf += ";";
             }
-            System.out.print(resPy);
 
             //Djikstra
             long debutDj = System.nanoTime();
@@ -46,15 +45,24 @@ public class MainTransport {
             Valeurs resDj = dj.resoudre(reseauStan,depart);
             long finDj = System.nanoTime();
             long tempsDj = (finDj - debutDj)/1000000;
+            ArrayList<String> cheminDj;
+            cheminDj= resDj.calculerChemin(arrivee);
+            String resPyDj = "";
+            for (int i = 0; i < cheminDj.size(); i++) {
+                resPyDj += cheminDj.get(i);
+                //';' aprés chaque noeud sauf le dernier
+                if (i != cheminBf.size() - 1) resPyDj += ";";
+            }
+            //seul le resultat de djikstra est donné a python
+            System.out.print(resPyDj);
 
             //comparaison temps dans un txt generer pour ne pas faire bugger l'interface python, true permet d'ajouter au fichier
             FileWriter fw = new FileWriter("temps.txt",true);
             fw.write("Depart : "+depart+" ");
             fw.write("Arrivee : "+arrivee+" ");
-            fw.write("chemin : "+resPy+"\n");
+            fw.write("chemin : "+resPyDj+"\n");
             fw.write("BellmanFord : "+tempsBF + "\n");
             fw.write("Djikstra : "+tempsDj+ "\n");
-//            fw.write("Dijkstra : "+ tempsDj + "\n");
             fw.close();
         } catch (Throwable e) {
             System.exit(1);

@@ -1,3 +1,6 @@
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -7,6 +10,7 @@ public class testGrapheListe {
 
     private GrapheListe graphe;
 
+    @BeforeEach
     public void init(){
         graphe = new GrapheListe();
         graphe.ajouterNoeud("A");
@@ -23,20 +27,25 @@ public class testGrapheListe {
         graphe.ajouterArc("D","C",10.0);
         graphe.ajouterArc("E","D",43.0);
     }
+
     // test pour le graphe
+    @Test
     public void testNombreNoeuds() {
         assertEquals(5, graphe.getNoeuds().size());
     }
 
+    @Test
     public void testArcsDeA(){
         assertEquals(2, graphe.getNoeuds().size());
     }
 
+    @Test
     public void testNoeudsInconnu(){
         assertThrows(Error.class, ()-> graphe.getArcs("V"));
     }
 
     //test pour Bellmanford
+    @Test
     public void testBellmanFordDistances(){
         BellmanFord bf = new BellmanFord();
         Valeurs res = new Valeurs();
@@ -45,6 +54,7 @@ public class testGrapheListe {
         assertEquals(76.0, res.getValeur("C"));
     }
 
+    @Test
     public void  testBellmanFordParents(){
         BellmanFord bf = new BellmanFord();
         Valeurs res = new Valeurs();
@@ -53,6 +63,7 @@ public class testGrapheListe {
     }
 
     //test pour Djikstra
+    @Test
     public void testDjikstraDistances(){
         Djikstra dj = new Djikstra();
         Valeurs res = new Valeurs();
@@ -61,6 +72,7 @@ public class testGrapheListe {
         assertEquals(76.0, res.getValeur("C"));
     }
 
+    @Test
     public void  testDjikstraParents(){
         Djikstra dj = new Djikstra();
         Valeurs res = new Valeurs();

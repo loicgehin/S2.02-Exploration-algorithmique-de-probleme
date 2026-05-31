@@ -36,7 +36,7 @@ public class testGrapheListe {
 
     @Test
     public void testArcsDeA(){
-        assertEquals(2, graphe.getNoeuds().size());
+        assertEquals(2, graphe.getArcs("A").getArcs().size());
     }
 
     @Test
@@ -48,7 +48,7 @@ public class testGrapheListe {
     @Test
     public void testBellmanFordDistances(){
         BellmanFord bf = new BellmanFord();
-        Valeurs res = new Valeurs();
+        Valeurs res = bf.resoudre(graphe, "A");
         assertEquals(0.0, res.getValeur("A"));
         assertEquals(12.0, res.getValeur("B"));
         assertEquals(76.0, res.getValeur("C"));
@@ -57,7 +57,7 @@ public class testGrapheListe {
     @Test
     public void  testBellmanFordParents(){
         BellmanFord bf = new BellmanFord();
-        Valeurs res = new Valeurs();
+        Valeurs res = bf.resoudre(graphe, "A");
         assertEquals("A", res.getParent("B"));
         assertEquals("D", res.getParent("C"));
     }
@@ -66,7 +66,7 @@ public class testGrapheListe {
     @Test
     public void testDjikstraDistances(){
         Djikstra dj = new Djikstra();
-        Valeurs res = new Valeurs();
+        Valeurs res = dj.resoudre(graphe, "A");
         assertEquals(0.0, res.getValeur("A"));
         assertEquals(12.0, res.getValeur("B"));
         assertEquals(76.0, res.getValeur("C"));
@@ -75,7 +75,7 @@ public class testGrapheListe {
     @Test
     public void  testDjikstraParents(){
         Djikstra dj = new Djikstra();
-        Valeurs res = new Valeurs();
+        Valeurs res = dj.resoudre(graphe, "A");
         assertEquals("A", res.getParent("B"));
         assertEquals("D", res.getParent("C"));
     }

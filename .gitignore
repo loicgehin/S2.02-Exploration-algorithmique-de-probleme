@@ -5,6 +5,9 @@ out/
 .kotlin
 *.iml
 *.idea
+.idea/
+Algorithmes_Djikstra_Bellman-Ford.iml
+
 
 ### Eclipse ###
 .apt_generated

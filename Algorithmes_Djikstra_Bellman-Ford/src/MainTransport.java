@@ -51,7 +51,7 @@ public class MainTransport {
             for (int i = 0; i < cheminDj.size(); i++) {
                 resPyDj += cheminDj.get(i);
                 //';' aprés chaque noeud sauf le dernier
-                if (i != cheminBf.size() - 1) resPyDj += ";";
+                if (i != cheminDj.size() - 1) resPyDj += ";";
             }
             //seul le resultat de djikstra est donné a python
             System.out.print(resPyDj);
